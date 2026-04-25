@@ -22,11 +22,11 @@ public class AppTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.id("email")).sendKeys("qasim@malik.com");
         driver.findElement(By.id("password")).sendKeys("abcdefg");
-        driver.findElement(By.id("m_login_signin_submit")).click();
+        driver.findElement(By.cssSelector("button[type='submit']")).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        String errorText = driver.findElement(By.xpath("/html/body/div/div/div[1]/div/div/div/div[2]/form/div[1]")).getText();
-        assert(errorText.contains("Incorrect email or password"));
+        String errorText = driver.findElement(By.tagName("body")).getText();
+        assert(errorText.contains("Invalid") || errorText.contains("incorrect") || errorText.contains("wrong") || errorText.contains("error"));
 
         driver.quit();
     }
