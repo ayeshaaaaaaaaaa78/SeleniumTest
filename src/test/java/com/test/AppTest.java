@@ -19,6 +19,7 @@ public class AppTest {
         WebDriver driver = new ChromeDriver(options);
 
         driver.navigate().to("http://103.139.122.250:4000/");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.name("email")).sendKeys("qasim@malik.com");
         driver.findElement(By.name("password")).sendKeys("abcdefg");
         driver.findElement(By.id("m_login_signin_submit")).click();
